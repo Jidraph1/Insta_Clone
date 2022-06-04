@@ -17,3 +17,12 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
+class Like(models.Model):
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='imagelikes')
+    liker = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userlike')
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=250)
+    image = models.ForeignKey(Image,on_delete = models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    
