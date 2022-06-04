@@ -11,5 +11,9 @@ class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='app_user')
 
 
-# class Profile(models.Model):
-#     profile_photo
+class Profile(models.Model):
+    profile_photo = CloudinaryField('image')
+    bio = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
