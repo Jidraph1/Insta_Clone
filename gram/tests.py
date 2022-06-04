@@ -42,3 +42,21 @@ class ProfileTestClass(TestCase):
         self.Prof.delete_profile()
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles)==0)     
+
+class CommentTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.Comm= Comment(id = '1', image = 'example.jpg', comment = 'Hi there', user ='James')
+        
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Comm,Comment))         
+
+class LikeTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.Lik= Like(id = '1', image = 'example.jpg', liker ='James')
+        
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Lik,Like))                 
