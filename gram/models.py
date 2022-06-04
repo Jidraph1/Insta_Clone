@@ -9,7 +9,8 @@ class Image(models.Model):
     name = models.CharField(max_length=60)
     caption = models.CharField(max_length=250)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='app_user')
-
+    posted_at = models.DateTimeField(auto_now_add=True)
+    location = models.CharField(max_length=60, blank=True)
 
 class Profile(models.Model):
     profile_photo = CloudinaryField('image')
@@ -25,4 +26,3 @@ class Comment(models.Model):
     comment = models.CharField(max_length=250)
     image = models.ForeignKey(Image,on_delete = models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    
