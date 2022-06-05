@@ -23,6 +23,21 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
      
+    @classmethod
+    def all_images(cls):
+        images = cls.objects.filter().order_by('-posted_at')
+        return images  
+         
+    @classmethod
+    def search_image(cls,search_term):
+        """
+    A method that searches an image
+     """
+        images = cls.objects.filter(name__icontains=search_term)
+        return images  
+
+    
+
 
 
 class Profile(models.Model):
@@ -39,7 +54,10 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()    
 
-
+    @classmethod
+    def search_profile(cls,search_term):
+        profiles = cls.objects.filter(user__username__icontains = search_term).all()
+        return profiles    
 
 
 class Like(models.Model):
