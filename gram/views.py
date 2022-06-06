@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from .models import Image, Profile, Like
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import ImageForm, ProfileForm, CommentForm
 from django.http import Http404
-from django.contrib.auth import logout
+from .forms import ImageForm, ProfileForm, CommentForm
+from django.contrib.auth import logout# Create your views here.
+from .email import send_welcome_email
 
 
-
-# Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
     current_user = request.user
@@ -30,6 +29,7 @@ def index(request):
         
     return render(request, 'index.html',{"current_user": current_user, "images":images, "profiles":profiles, "form":form})
 
+
 @login_required(login_url='/accounts/login/')
 def post(request):
     
@@ -44,6 +44,7 @@ def post(request):
     else:
         form = ImageForm()
         return render(request, 'post.html', {'form':form})
+    
 
 @login_required(login_url='/accounts/login/')
 def userprofile(request):
@@ -51,6 +52,7 @@ def userprofile(request):
     images =Image.objects.filter(user_id = current_user.id).all()
     profiles = Profile.objects.filter(user_id = current_user.id).all()
     return render(request, 'user-profile.html',{"current_user": current_user, "images":images, "profiles":profiles})
+ 
 
 @login_required(login_url='/accounts/login/')
 def updateprofile(request):
@@ -68,7 +70,8 @@ def updateprofile(request):
         else:
             form = ProfileForm()
                         
-    return render(request, 'update-profile.html', {'form':form}) 
+    return render(request, 'update-profile.html', {'form':form})  
+
 
 @login_required
 def search_results(request):

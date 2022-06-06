@@ -1,7 +1,7 @@
-{% extends 'base.html'%}
+{%extends 'base.html'%}
 {% load bootstrap3 %}
-{% load static %}
-{% block content %}
+{% load static%}
+{% block content%}
 
 
 <div class="container">
@@ -79,5 +79,11 @@
         {% endfor %}
     </div>
 </div>
-
+<script>
+    function copyLink(element) {
+        var copyText = document.getElementById(element);
+        copyText.select();
+        document.execCommand("copy");
+    }
+</script>
 {% endblock%}
