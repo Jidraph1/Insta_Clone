@@ -1,0 +1,19 @@
+                                   List of databases
+    Name     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-------------+----------+----------+-------------+-------------+-----------------------
+ blogbusters | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ expense     | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ galleria    | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ insta       | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ jidraph     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ pitches     | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ pitchy      | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+             |          |          |             |             | postgres=CTc/postgres
+ template1   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+             |          |          |             |             | postgres=CTc/postgres
+ tribune     | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ watchlist   | jidraph  | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+(12 rows)
+
