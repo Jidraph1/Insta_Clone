@@ -3,7 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Image, Profile, Like
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import ImageForm, ProfileForm, CommentForm
+from django.http import Http404
+from django.contrib.auth import logout
+
 
 
 # Create your views here.
@@ -51,3 +55,12 @@ def search_results(request):
   else:
     message="You haven't searched for any term."  
     return render(request,'search.html',{"message":message,"users":searched_users})
+
+@login_required(login_url='/accounts/login/')
+def profile(request,pk):
+    
+    user = User.objects.get(pk = pk)
+    images = Image.objects.filter(user = user).all()
+    current_user = request.user
+    profiles = Profile.objects.filter(user = user).all()
+    return render(request,'profile.html',{"current_user":current_user,"images":images, "user":user, "profiles":profiles})  
